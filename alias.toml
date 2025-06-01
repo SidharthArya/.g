@@ -1,0 +1,21 @@
+[alias]
+  st = status -sb
+  ci = commit
+  cm = commit -m
+  co = checkout
+  rv = remote -v
+  d = diff
+  a = add
+  ap = add -p
+  br = branch
+  s = status
+  lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+  lg = lg2
+  gl = config --global --list
+  se = !git rev-list --all | xargs git grep -F
+  P = push
+  sync-all = "!git branch -r | grep -v '\\->'| sed 's,\\x1B\\[[0-9;]*[a-zA-Z],,g' | while read remote; do git branch --track ${remote#origin/} $remote;done "
+  stashgrep = "!f() { for i in `git stash list --format=\"%gd\"` ; \
+              do git stash show -p $i | grep -H --label=\"$i\" \"$@\" ; done ; }; f"
+
